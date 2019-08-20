@@ -7,26 +7,39 @@ let newPlayerOne = new player(0, 0);
         this.strokeCount = strokeCount;
 }
 
-    function newGameButton(){
-        document.getElementById("buttonYouWantToHide").classList.add("hide").innerHTML = "Pick your club."
-    
-}
-
-    function clubButtons (){
-
-        document.getElementById("onClick club20").innerHTML = "Your twenty iron, huh?"
-        document.getElementById("onClick club12").innerHTML = "Your twelve iron, huh?"
-        document.getElementById("onClick club10").innerHTML = "Your twelve iron, huh?"
-        document.getElementById("onClick club08").innerHTML = "Your Eight iron, huh?"
-   
-}
+runGame();
 
 function runGame() {
-   
-    newGameButton();
-        if( newGameButton()) clubButtons();
+    
+    let yardsToPin= 50
+    while (yardsToPin > 0){
+        if (50 >= yardsToPin && yardsToPin >=21){
+          let clubDistance = fairwayClubs();
+          yardsToPin = yardsToPin - clubDistance;
+          console.log(yardsToPin);
+          
+        }
+        if (20 >= yardsToPin && yardsToPin >= 11) {
+            let userInput = console.log(fairwayClubs());
+            yardsToPin = userInput;
+            console.log(yardsToPin);           
+        }
+        if (10 >= yardsToPin && yardsToPin >= 0){
+            let clubDistance = fairwayClubs();
+            yardsToPin = yardsToPin - clubDistance;
+            console.log(yardsToPin);
+            
+        }
+        else{
+        
+        }
+    
 
-}
+        
+    }    
+} 
+
+
 
 function course(yardsToPin, fairway, sandPit, puttingGreen)  {
     let course;
@@ -41,52 +54,80 @@ function course(yardsToPin, fairway, sandPit, puttingGreen)  {
 
     // console.log(diceRoll(3));
 
-function diceRoll (sides) {
+    function diceRoll (sides) {
     let roll = Math.floor(Math.random()*(sides)+ 1);
      return roll;
 }
 
     // console.log(randomDiceValue(6,60));
-function randomDiceValue (dieSides, yardsToPin){
-    yardsToPin = Math.abs(Math.floor((yardsToPin) - Math.random(0)*(dieSides)));
-   return yardsToPin;
+function randomDiceValue (dieSides){
+    return Math.abs(Math.floor(Math.random(0)*(dieSides)+1));
+
     
 }
 let yardsToPin = 60;
 
 
-function puttingGreenClubs(){
-    switch(){
-        case 1: 
-    }
-}
+// function puttingGreenClubs(){
+//     switch(){
+//         case 1: 
+//     }
+// }
    
 function fairwayClubs(){
-    switch () {
-        case 1: clubTwentyIronButton();
+    let userInput = prompt("1: Your Twenty Iron? 2: Your Twelve Iron? 3: Your Ten Iron? 4: Your Eight Iron?");
+    switch (userInput) {
+        case "1": 
+            return clubTwentyIron();
             break;
-        case 2: clubTwelveIronButton();
+        case "2": 
+            return clubTwelveIron();
             break;
-        case 3: clubTenIronButton();
+        case "3": 
+            return clubTenIron();
             break;
-        case 4: clubEightIronButton();
+        case "4": 
+            return clubEightIron();
             break;
-    
+            
         default:
             break;
+    
     }
+    
 }
-
-    function clubTwentyIronButton (){
+function fairwayClubs(){
+    let userInput = prompt("1: Your Twenty Iron? 2: Your Twelve Iron? 3: Your Ten Iron? 4: Your Eight Iron?");
+    switch (userInput) {
+        case "1": 
+            return clubTwentyIron();
+            break;
+        case "2": 
+            return clubTwelveIron();
+            break;
+        case "3": 
+            return clubTenIron();
+            break;
+        case "4": 
+            return clubEightIron();
+            break;
+            
+        default:
+            break;
+    
+    }
+    
+}
+    function clubTwentyIron (){
         return randomDiceValue(20);
     }  
-    function clubTwelveIronButton (){
+    function clubTwelveIron (){
         return randomDiceValue(12);
     }
-    function clubTenIronButton (){
+    function clubTenIron (){
         return randomDiceValue(10);
     }
-    function clubEightIronButton (){
+    function clubEightIron (){
         return randomDiceValue(8);
     }    
     function clubSandWedgeButton (){
@@ -95,6 +136,20 @@ function fairwayClubs(){
     function clubPutterButton (){
         return randomDiceValue(6);
     }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     // let newPlayerTwo = new player(0, 0, 0, 0);
 
